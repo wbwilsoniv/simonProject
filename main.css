@@ -1,0 +1,40 @@
+* {
+      margin: 0 auto;
+}
+.gameboard {
+      display: grid;
+      grid-template-rows:  1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+.gameboard div{
+      width: 100px;
+      height: 50px;
+}
+.redbtn {
+      background-color: red;
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 1;
+      grid-row-end: 1;
+}
+.bluebtn {
+      background-color: blue;
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 2;
+}
+.greenbtn {
+      background-color: green;
+      grid-column-start: 2;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 1;
+}
+.yellowbtn {
+      background-color: yellow;
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 2;
+      grid-row-end: 2;
+}
