@@ -11,7 +11,14 @@ const userArray = [];
 
 
 function randomize() {
-
+      function getRandomNum(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      let randomNum = getRandomNum(1, 4);
+      console.log(randomNum);
+      
 }
 // Pass-thru buttons to create button class?
 // add eventlistners (click) to button
