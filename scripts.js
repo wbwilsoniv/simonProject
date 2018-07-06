@@ -1,5 +1,5 @@
 // Global Variables
-const gameBoard = document.querySelector(`.gameboard`);
+const gameBoard = document.querySelector(`.gameBoard`);
 const redBtn = document.querySelector(`.redbtn`);
 const blueBtn = document.querySelector(`.bluebtn`);
 const greenBtn = document.querySelector(`.greenbtn`);
@@ -7,11 +7,10 @@ const yellowBtn = document.querySelector(`.yellowbtn`);
 const compArray = [];
 const userArray = [];
 const btnArray = ['green',`red`,'yellow', 'blue'];
+const form = document.querySelector('.gameBoard');
+const btn = form.querySelectorAll(".gamebtn");
 
 // Game Logic Functions
-// function buildBtnArray() {
-//       btnArray.indexOf
-// }
 
 function randomize() {
       // function from MDN for inclusive random integer between two values.
@@ -22,23 +21,34 @@ function randomize() {
             return Math.floor(Math.random() * (max - min + 1)) + min;
       }
       let randomNum = getRandomNum(0, 3);
-      debugger
-      console.log(randomNum);
       compArray.push(btnArray[randomNum]);
-
 }
 randomize();
-// Pass-thru buttons to create button class?
-// add eventlistners (click) to button
-// add value to each button
-// add color
-// class Btn (color, value) {
-//       constructor {
 
-//       }
-// }
-// on click starts game
-// randomly select 1-4, push object to
+// on click of startbtn - game logic runs
 function gameStart() {
 
 }
+// function to take User input and push to userArray
+// when button click, pushes value (set as color) of button to userArray
+function getUserInput() {
+        form.addEventListener('click', (e) => {
+        e.preventDefault();
+        // checks for value(color) of e.target before pushing to userArray
+        if (e.target.value === 'green'){
+              userArray.push('green');
+        }
+        if (e.target.value === 'blue'){
+              userArray.push('blue');
+        }
+        if (e.target.value === 'red'){
+              userArray.push('red');
+        }
+        if (e.target.value === 'yellow'){
+              userArray.push('yellow');
+        }
+      // debugger;
+  });
+}
+getUserInput();
+console.log(userArray);
