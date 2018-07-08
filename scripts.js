@@ -52,3 +52,13 @@ function getUserInput() {
 }
 getUserInput();
 console.log(userArray);
+
+function checkArrays() {
+      if(userArray === compArray){
+            randomize();
+      } else {
+            console.log('Game Over');
+      }
+}
+checkArrays();
+
