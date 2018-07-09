@@ -95,14 +95,14 @@ clearGame();
 function showCompArray () {
       for(i = 0; i < compArray.length; i+=1){
         if(compArray[i] === 'green'){
-        // add and run green animation - classlist
+          greenBtn.classList.add('glow');
         } else if(compArray[i] === 'red'){
-          
+          redBtn.classList.add('glow');
         } else if(compArray[i] === 'blue'){
-      
+          blueBtn.classList.add('glow');
         } else if(ccompArray[i] === 'yellow'){
-
-      }
+          yellowBtn.classList.add('glow');
+        }
       }
 }
 // function for displaying userArray

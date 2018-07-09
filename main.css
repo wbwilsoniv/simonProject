@@ -3,32 +3,13 @@
 }
 .glow {
       animation-name: divGlow;
-      animation-duration: 1.5s;
+      animation-duration: 1s;
+      animation-delay: 0.2s;
 }
 @keyframes divGlow {
       from {background-color: default;}
       50% {opacity: 0.5;}
       to {background-color: default;}
-}
-@keyframes redGlow {
-      from {background-color: rgb(255,0,0);}
-      50% {background-color: rgba(255, 0, 0, 0.5);}
-      to {background-color: rgb(255,0,0);}
-}
-@keyframes blueGlow {
-      from {background-color: rgb(0,0,255);}
-      50% {background-color: rgba(0,0,255, 0.5);}
-      to {background-color: rgb(0,0,255);}
-}
-@keyframes greenGlow {
-      from {background-color:rgb(0,128,0);}
-      50% {background-color: rgba(0,128,0, 0.5);}
-      to {background-color:rgb(0,128,0);}
-}
-@keyframes yellowGlow {
-      from {background-color:rgb(255,255,0);}
-      50% {background-color: rgba(255,255,0, 0.5);}
-      to {background-color: rgb(255,255,0);}
 }
 .gameboardParentDiv {
       position: relative;
@@ -49,7 +30,7 @@
       height: 190px;
 }
 .redParentDiv:active {
-      animation: redGlow 1.5s ease-in-out;
+      animation: divGlow;
 }
 .blueParentDiv {
       background-color: blue;
@@ -60,6 +41,9 @@
       width: 190px;
       height: 190px;
 }
+.blueParentDiv:active {
+      animation: divGlow;
+}
 .greenParentDiv {
       background-color: green;
       position: absolute;
@@ -69,6 +53,9 @@
       width: 190px;
       height: 190px;
 }
+.greenParentDiv:active {
+      animation: divGlow;
+}
 .yellowParentDiv {
       background-color: yellow;
       position: absolute;
@@ -77,6 +64,9 @@
       border-radius: 0 0 0 100%;
       width: 190px;
       height: 190px;
+}
+.yellowParentDiv:active {
+      animation: divGlow;
 }
 .gameControls div {
       display: inline-flex;
