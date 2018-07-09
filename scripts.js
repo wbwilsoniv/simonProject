@@ -9,8 +9,8 @@ const userArray = [];
 const btnArray = ['green',`red`,'yellow', 'blue'];
 const form = document.querySelector('.gameBoard');
 const btn = form.querySelectorAll(".gamebtn");
-const userScore = 0;
 const clearBtn = document.querySelector('.clear');
+let userScore = 0;
 
 // Game Logic Functions
 
@@ -57,8 +57,9 @@ console.log(userArray);
 // game logic to check userArray & compArray then call randomize function to add additional color and increase userScore by 1
 function checkArrays() {
       if(userArray === compArray){
-            randomize();
             userScore += 1;
+            console.log('Correct!');
+            randomize();
       } else {
             console.log('Game Over');
       }
@@ -75,9 +76,23 @@ winCheck();
 function clearGame() {
       clearBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        let userArray = [];
-        let compArray = [];
-        let userScore = 0;
+        userArray.length = 0;
+        compArray.length = 0;
+        userScore = 0;
       })
 }
 clearGame();
+
+// View
+
+// function for displaying compArray
+
+// function for displaying userArray
+
+// function to display userScore
+
+// win logic display function
+
+// lose logic display function
+
+//
