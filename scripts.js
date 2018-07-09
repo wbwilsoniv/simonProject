@@ -9,6 +9,10 @@ const btn = form.querySelectorAll(".gamebtn");
 const clearBtn = document.querySelector('.clear');
 const startBtn = document.querySelector('.start');
 const btnArray = ['green',`red`,'yellow', 'blue'];
+const redSound = new Audio('sounds/red-piano-a.wav');
+const blueSound = new Audio('sounds/blue-piano-f.wav');
+const yellowSound = new Audio('sounds/yellow-piano-c.wav');
+const greenSound = new Audio('sounds/green-piano-e.wav');
 let userScore = 0;
 let compArray = [];
 let userArray = [];
@@ -42,18 +46,22 @@ function getUserInput() {
         e.preventDefault();
         // checks for value(color) of e.target before pushing to userArray
         if (e.target.value === 'green'){
+              greenSound.play();
               userArray.push('green');
               greenBtn.classList.add('glow');
         }
         if (e.target.value === 'blue'){
+              blueSound.play();
               userArray.push('blue');
               blueBtn.classList.add('glow');
         }
         if (e.target.value === 'red'){
+              redSound.play();
               userArray.push('red');
               redBtn.classList.add('glow');
         }
         if (e.target.value === 'yellow'){
+              yellowSound.play();
               userArray.push('yellow');
               yellowBtn.classList.add('glow');
         }
@@ -114,6 +122,8 @@ function showScore (){
       scoreBoard.innerHTML = userScore;
 }
 showScore();
+// sound function
+
 // win logic display function
 
 // lose logic display function
