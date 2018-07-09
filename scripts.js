@@ -1,9 +1,9 @@
 // Global Variables
 const gameBoard = document.querySelector(`.gameBoard`);
-const redBtn = document.querySelector(`.redbtn`);
-const blueBtn = document.querySelector(`.bluebtn`);
-const greenBtn = document.querySelector(`.greenbtn`);
-const yellowBtn = document.querySelector(`.yellowbtn`);
+const redBtn = document.querySelector(`.redParentDiv`);
+const blueBtn = document.querySelector(`.blueParentDiv`);
+const greenBtn = document.querySelector(`.greenParentDiv`);
+const yellowBtn = document.querySelector(`.yellowParentDiv`);
 const form = document.querySelector('.gameBoard');
 const btn = form.querySelectorAll(".gamebtn");
 const clearBtn = document.querySelector('.clear');
@@ -45,15 +45,19 @@ function getUserInput() {
         // checks for value(color) of e.target before pushing to userArray
         if (e.target.value === 'green'){
               userArray.push('green');
+              greenBtn.classList.add('glow');
         }
         if (e.target.value === 'blue'){
               userArray.push('blue');
+              blueBtn.classList.add('glow');
         }
         if (e.target.value === 'red'){
               userArray.push('red');
+              redBtn.classList.add('glow');
         }
         if (e.target.value === 'yellow'){
               userArray.push('yellow');
+              yellowBtn.classList.add('glow');
         }
       // debugger;
   });
@@ -87,9 +91,24 @@ clearGame();
 // View
 
 // function for displaying compArray
+// loops over array - toggles display for each color
+function showCompArray () {
+      for(i = 0; i < compArray.length; i+=1){
+        if(compArray[i] === 'green'){
+        // add and run green animation - classlist
+        } else if(compArray[i] === 'red'){
+          
+        } else if(compArray[i] === 'blue'){
+      
+        } else if(ccompArray[i] === 'yellow'){
 
+      }
+      }
+}
 // function for displaying userArray
-
+function showUserArray(){
+      redBtn.add
+}
 // function to display userScore
 
 // win logic display function
