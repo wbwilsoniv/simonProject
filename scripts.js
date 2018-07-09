@@ -10,7 +10,9 @@ const btnArray = ['green',`red`,'yellow', 'blue'];
 const form = document.querySelector('.gameBoard');
 const btn = form.querySelectorAll(".gamebtn");
 const clearBtn = document.querySelector('.clear');
+const startBtn = document.querySelector('.start');
 let userScore = 0;
+
 
 // Game Logic Functions
 
@@ -29,8 +31,12 @@ randomize();
 
 // on click of startbtn - game logic runs
 function gameStart() {
-
+  startBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      randomize();
+  })
 }
+gameStart();
 // function to take User input and push to userArray
 // when button click, pushes value (set as color) of button to userArray
 function getUserInput() {
