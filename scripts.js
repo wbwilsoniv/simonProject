@@ -26,8 +26,6 @@ function randomize() {
       let randomNum = getRandomNum(0, 3);
       compArray.push(btnArray[randomNum]);
 }
-randomize();
-
 // on click of startbtn - game logic runs
 function gameStart() {
   startBtn.addEventListener('click', (e) => {
@@ -100,19 +98,30 @@ function showCompArray () {
           redBtn.classList.add('glow');
         } else if(compArray[i] === 'blue'){
           blueBtn.classList.add('glow');
-        } else if(ccompArray[i] === 'yellow'){
+        } else if(compArray[i] === 'yellow'){
           yellowBtn.classList.add('glow');
         }
       }
 }
+let showComp = setInterval(showCompArray, 1000);
 // function for displaying userArray
 function showUserArray(){
       redBtn.add
 }
 // function to display userScore
-
+function showScore (){
+      const scoreBoard = document.querySelector('.scoreboard > p');
+      scoreBoard.innerHTML = userScore;
+}
+showScore();
 // win logic display function
 
 // lose logic display function
 
-//
+// round logic
+// game consists of: start button
+// randomize() and display compArray
+// wait for userInput
+// checkArray() with delay
+// showScore() OR Lose
+// randomize runs again
