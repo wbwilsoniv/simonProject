@@ -4,21 +4,20 @@ const redBtn = document.querySelector(`.redbtn`);
 const blueBtn = document.querySelector(`.bluebtn`);
 const greenBtn = document.querySelector(`.greenbtn`);
 const yellowBtn = document.querySelector(`.yellowbtn`);
-const compArray = [];
-const userArray = [];
-const btnArray = ['green',`red`,'yellow', 'blue'];
 const form = document.querySelector('.gameBoard');
 const btn = form.querySelectorAll(".gamebtn");
 const clearBtn = document.querySelector('.clear');
 const startBtn = document.querySelector('.start');
+const btnArray = ['green',`red`,'yellow', 'blue'];
 let userScore = 0;
-
+let compArray = [];
+let userArray = [];
 
 // Game Logic Functions
 
+// function from MDN for inclusive random integer between two values.
+// use: randomly produce number between 1-4 to push to compArray for game logic.
 function randomize() {
-      // function from MDN for inclusive random integer between two values.
-      // use: randomly produce number between 1-4 to push to compArray for game logic.
       function getRandomNum(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -37,6 +36,7 @@ function gameStart() {
   })
 }
 gameStart();
+
 // function to take User input and push to userArray
 // when button click, pushes value (set as color) of button to userArray
 function getUserInput() {
@@ -61,7 +61,7 @@ function getUserInput() {
 getUserInput();
 console.log(userArray);
 // game logic to check userArray & compArray then call randomize function to add additional color and increase userScore by 1
-function checkArrays() {
+function checkArrays(userArray, compArray) {
       if(userArray === compArray){
             userScore += 1;
             console.log('Correct!');
