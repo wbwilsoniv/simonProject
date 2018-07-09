@@ -62,22 +62,17 @@ getUserInput();
 console.log(userArray);
 // game logic to check userArray & compArray then call randomize function to add additional color and increase userScore by 1
 function checkArrays(userArray, compArray) {
-      if(userArray === compArray){
-            userScore += 1;
+      if(userArray === compArray && userScore >= 5){
+            console.log('Winner');
+      } else if (userArray === compArray) {
             console.log('Correct!');
+            userScore += 1;
             randomize();
       } else {
-            console.log('Game Over');
+            console.log('You Lose');
       }
 }
 checkArrays();
-// win logic function
-function winCheck() {
-      if(userArray === compArray && userScore === 15) {
-            console.log('Winner');
-      }
-}
-winCheck();
 // clear game function
 function clearGame() {
       clearBtn.addEventListener('click', (e) => {
