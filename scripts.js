@@ -39,15 +39,17 @@ function gameStart() {
   startBtn.addEventListener('click', (e) => {
       e.preventDefault();
       randomize();
+      alert('Get Ready for Round 1! Repeat the process');
   })
 }
-
+gameStart();
 function clearGame() {
       clearBtn.addEventListener('click', (e) => {
         e.preventDefault();
         userArray.length = 0;
         compArray.length = 0;
         userScore = 0;
+        showScore();
       })
 }
 // GAME LOOP
@@ -67,8 +69,6 @@ function gameLoop() {
       showCompArray();
       getUserInput();
       timedArrayCheck();
-      debugger;
-      showScore();
 }
 gameLoop();
 
@@ -158,7 +158,6 @@ function compMoves(compArray) {
             greenBtn.classList.toggle('glow');
           }, 500);
           level-=1;
-          // if statement to end loop within getUserInput - stops loop - maybe in getUserInput
       } else if(compArray[i] === 'red') {
           redBtn.classList.toggle('glow');
           setTimeout(function(){
@@ -179,7 +178,6 @@ function compMoves(compArray) {
                 level-=1;
       }
 }
-     // debugger;
 
 }
 
@@ -208,9 +206,6 @@ function showScore (){
       const scoreBoard = document.querySelector('.scoreboard > p');
       scoreBoard.innerHTML = userScore;
 }
-showScore();
-clearGame();
-// sound function
 
 // win logic display function
 
