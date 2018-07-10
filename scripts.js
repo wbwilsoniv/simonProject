@@ -110,14 +110,16 @@ let arrayCheck = setTimeout(function(){
       checkArrays(userArray, compArray);
 }, 5000);
 }
-
+// compares arrays for end of the round
+// if arrays match, increase userScore,
 function checkArrays(userArray, compArray) {
-      if(userArray === compArray) {
-            i+=1;
+      if(userArray[i] === compArray[i] && userArray.length === compArray.length) {
             userScore += 1;
             alert('Correct! Get ready for the next round');
             clearInterval(showCompArray);
+            showScore();
             randomize();
+            i++;
             if(userArray.length === compArray.length && userScore >= 5){
                alert('Winner');
             };
