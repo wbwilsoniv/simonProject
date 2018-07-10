@@ -16,6 +16,7 @@ const greenSound = new Audio('sounds/green-piano-e.wav');
 let userScore = 0;
 let compArray = [];
 let userArray = [];
+// let displayArray 
 
 // Game Logic Functions
 
@@ -29,12 +30,14 @@ function randomize() {
       }
       let randomNum = getRandomNum(0, 3);
       compArray.push(btnArray[randomNum]);
+      return randomNum
 }
 // on click of startbtn - game logic runs
 function gameStart() {
   startBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      randomize();
+      showCompArray();
+      //playGame(compArray);
   })
 }
 gameStart();
@@ -66,23 +69,29 @@ function getUserInput() {
               yellowBtn.classList.add('glow');
         }
       // debugger;
+      checkArrays(userArray, compArray);
   });
 }
-getUserInput();
-console.log(userArray);
+
+
 // game logic to check userArray & compArray then call randomize function to add additional color and increase userScore by 1
 function checkArrays(userArray, compArray) {
-      if(userArray === compArray && userScore >= 5){
-            console.log('Winner');
-      } else if (userArray === compArray) {
-            console.log('Correct!');
+      let i = 0;
+      console.log(userArray);
+      console.log(compArray)
+      if(userArray[i] === compArray[i]) {
             userScore += 1;
-            randomize();
-      } else {
-            console.log('You Lose');
-      }
+            alert('Correct! Get ready for the next round');
+            if(userArray.length === compArray.length && userScore >= 5){
+               alert('Winner');
+            };
+      //else if (userArray !== compArray) {
+        //    alert('You Lose. Womp Womp.');
+     // }
+     compArray[i]
+     i+=1
+  } else alert('You Lose. Womp Womp.');
 }
-checkArrays();
 // clear game function
 function clearGame() {
       clearBtn.addEventListener('click', (e) => {
@@ -92,26 +101,75 @@ function clearGame() {
         userScore = 0;
       })
 }
-clearGame();
+
 
 // View
 
 // function for displaying compArray
 // loops over array - toggles display for each color
+// code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
 function showCompArray () {
-      for(i = 0; i < compArray.length; i+=1){
-        if(compArray[i] === 'green'){
-          greenBtn.classList.add('glow');
-        } else if(compArray[i] === 'red'){
-          redBtn.classList.add('glow');
-        } else if(compArray[i] === 'blue'){
-          blueBtn.classList.add('glow');
-        } else if(compArray[i] === 'yellow'){
-          yellowBtn.classList.add('glow');
+      let i = 0;
+      let showComp = setInterval(function(){
+        playGame(compArray);
+        if (i >= compArray.length) {
+              clearInterval(showComp);
         }
-      }
+      }, 4000)
 }
-let showComp = setInterval(showCompArray, 1000);
+
+function playGame(compArray) {
+      let i = 0;
+      let randomIndex = randomize();
+      console.log(compArray[randomIndex])
+      if(compArray[randomIndex ] == 'green') {
+          greenBtn.classList.add('glow');
+          //set timeout
+          setTimeout(function(){
+            greenBtn.classList.remove('glow');  getUserInput();
+            //   
+          }, 2000);
+          // if statement to end loop within getUserInput - stops loop - maybe in getUserInput
+      } else if(compArray[randomIndex ] === 'red') {
+          redBtn.classList.add('glow');
+          setTimeout(function(){
+            redBtn.classList.remove('glow');  getUserInput();  
+          }, 2000);
+      } else if(compArray[randomIndex ] === 'blue') {
+          blueBtn.classList.add('glow');
+          setTimeout(function(){
+            blueBtn.classList.remove('glow');  getUserInput();  
+          }, 2000);
+      } else if(compArray[randomIndex ] === 'yellow') {
+            yellowBtn.classList.add('glow');
+            setTimeout(function(){
+                  yellowBtn.classList.remove('glow');  getUserInput();  
+                }, 2000);
+      }
+     // debugger;
+
+}
+
+// function showCompArray () {
+//       for(i = 0; i < compArray.length; i+=1){
+//         if(compArray[i] === 'green'){
+//           greenSound.play();
+//           greenBtn.classList.add('glow');
+//         } else if(compArray[i] === 'red'){
+//           redSound.play();
+//           redBtn.classList.add('glow');
+//         } else if(compArray[i] === 'blue'){
+//           blueSound.loop = false;
+//           blueSound.play();
+//           blueBtn.classList.add('glow');
+//         } else if(compArray[i] === 'yellow'){
+//           yellowSound.play();
+//           yellowSound.loop = false;
+//           yellowBtn.classList.add('glow');
+//         }
+//       }
+// }
+// let showComp = setInterval(showCompArray, 1000);
 // function for displaying userArray
 function showUserArray(){
       redBtn.add
@@ -122,6 +180,7 @@ function showScore (){
       scoreBoard.innerHTML = userScore;
 }
 showScore();
+clearGame();
 // sound function
 
 // win logic display function
@@ -129,6 +188,7 @@ showScore();
 // lose logic display function
 
 // round logic
+// clear round
 // game consists of: start button
 // randomize() and display compArray
 // wait for userInput
