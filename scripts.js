@@ -18,7 +18,7 @@ let i = 0;
 let compArray = [];
 let userArray = [];
 let level = compArray.length;
-// let displayArray 
+// let displayArray
 
 // Game Logic Functions
 
@@ -38,8 +38,9 @@ function randomize() {
 function gameStart() {
   startBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      randomize();
+      if (compArray.length === 0) {randomize();}
       alert('Get Ready for Round 1! Repeat the process');
+      gameLoop();
   })
 }
 gameStart();
@@ -62,16 +63,15 @@ function clearGame() {
 // timedArrayCheck();
 // update scoreboard();
 // checkArrays();
+clearGame();
+gameStart();
 function gameLoop() {
-      clearGame();
-      gameStart();
       randomize();
       showCompArray();
       getUserInput();
       timedArrayCheck();
 }
 gameLoop();
-
 // function to take User input and push to userArray
 // when button click, pushes value (set as color) of button to userArray
 function getUserInput() {
@@ -118,7 +118,7 @@ function checkArrays(userArray, compArray) {
             alert('Correct! Get ready for the next round');
             clearInterval(showCompArray);
             showScore();
-            randomize();
+            gameLoop();
             i++;
             if(userArray.length === compArray.length && userScore >= 5){
                alert('Winner');
