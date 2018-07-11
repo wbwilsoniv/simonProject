@@ -10,7 +10,7 @@ Simon
 I played Simon at my grandparents house growing up. It is way better than "Bop-it", but not better than "Bop-it Extreme".
 
 **Build status**
-Level 1 of game logic functions with a display bug. The single color to be matched is flashing instead of blinking. Level 2 does not properly display the compArray
+Level 1 of game logic functions with a display bug. The single color to be matched is flashing instead of blinking. Level 2 does not properly display the compArray.
 
 **Code Style**
 AirBnb JS
