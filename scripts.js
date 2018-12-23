@@ -64,7 +64,6 @@ function clearGame() {
 // update scoreboard();
 // checkArrays();
 clearGame();
-gameStart();
 function gameLoop() {
       randomize();
       showCompArray();
