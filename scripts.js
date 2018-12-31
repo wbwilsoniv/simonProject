@@ -36,23 +36,35 @@ function randomize() {
 }
 // on click of startbtn - game logic runs
 function gameStart() {
-  startBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (compArray.length === 0) {randomize();}
+//   startBtn.addEventListener('click', (e) => {
+//       e.preventDefault();
+//       if (compArray.length === 0) {randomize();}
       alert('Get Ready for Round 1! Repeat the process');
-      gameLoop();
-  })
+      // gameLoop();
 }
-gameStart();
+
 function clearGame() {
-      clearBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        userArray.length = 0;
-        compArray.length = 0;
+        userArray = [];
+        compArray = [];
         userScore = 0;
-        showScore();
-      })
+      //   showScore();
 }
+
+function pageLoad() {
+      startBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            gameStart();
+            });
+      clearBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            clearGame();
+      });
+      form.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log(e.target.value);
+      });
+}
+pageLoad();
 // GAME LOOP
 
 // clearGame();
@@ -63,7 +75,7 @@ function clearGame() {
 // timedArrayCheck();
 // update scoreboard();
 // checkArrays();
-clearGame();
+
 function gameLoop() {
       randomize();
       showCompArray();
