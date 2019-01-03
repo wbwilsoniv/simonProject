@@ -1,9 +1,9 @@
 // Global Variables
 const gameBoard = document.querySelector(`.gameBoard`);
-const redBtn = document.querySelector(`.redParentDiv`);
-const blueBtn = document.querySelector(`.blueParentDiv`);
-const greenBtn = document.querySelector(`.greenParentDiv`);
-const yellowBtn = document.querySelector(`.yellowParentDiv`);
+const redBtn = document.querySelector(`#redParentDiv`);
+const blueBtn = document.querySelector(`#blueParentDiv`);
+const greenBtn = document.querySelector(`#greenParentDiv`);
+const yellowBtn = document.querySelector(`#yellowParentDiv`);
 const form = document.querySelector('.gameBoard');
 const btn = form.querySelectorAll(".gamebtn");
 const clearBtn = document.querySelector('.clear');
@@ -32,7 +32,7 @@ function randomize() {
       }
       let randomNum = getRandomNum(0, 3);
       compArray.push(btnArray[randomNum]);
-      console.log(randomNum);
+      console.log(compArray);
 }
 // on click of startbtn - game logic runs
 function gameStart() {
@@ -40,7 +40,7 @@ function gameStart() {
 //       e.preventDefault();
 //       if (compArray.length === 0) {randomize();}
       alert('Get Ready for Round 1! Repeat the process');
-      setTimeout(() => {gameLoop()},1000);
+      setTimeout(() => {gameLoop()}, 1000);
 }
 
 function clearGame() {
@@ -78,9 +78,14 @@ pageLoad();
 
 function gameLoop() {
       randomize();
-      // showCompArray();
+      showCompArray();
       // getUserInput();
       // timedArrayCheck();
+}
+
+function compTurn() {
+      randomize();
+      showCompArray();
 }
 // function to take User input and push to userArray
 // when button click, pushes value (set as color) of button to userArray
@@ -150,7 +155,7 @@ function checkArrays(userArray, compArray) {
 // loops over array - toggles display for each color
 // code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
 function showCompArray () {
-      let showComp = setInterval(function(){
+      let showComp = setTimeout(function(){
         compMoves(compArray);
         if (i > compArray.length) {
               clearInterval(showComp);
