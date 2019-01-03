@@ -169,7 +169,7 @@ function showCompArray () {
         if (i > compArray.length) {
               clearInterval(showComp);
         }
-      }, 500);
+      }, 1000);
       });
 }
 
@@ -180,37 +180,23 @@ async function asyncCall() {
 }
 
 function compMoves(compArray) {
-      let level = compArray.length;
-      while(level > 0){
-        if(compArray[i] === 'green') {
-          greenBtn.classList.toggle('glow');
-          //set timeout
-          setTimeout(function(){
-            greenBtn.classList.toggle('glow');
-          }, 500);
-          level-=1;
-      } else if(compArray[i] === 'red') {
-          redBtn.classList.toggle('glow');
-          setTimeout(function(){
-            redBtn.classList.toggle('glow');
-          }, 500);
-          level-=1;
-      } else if(compArray[i] === 'blue') {
-          blueBtn.classList.toggle('glow');
-          setTimeout(function(){
-            blueBtn.classList.toggle('glow');
-          }, 500);
-          level-=1;
-      } else if(compArray[i] === 'yellow') {
-            yellowBtn.classList.toggle('glow');
-            setTimeout(function(){
+      compArray.forEach(color => {
+          if (color === 'green') { 
+                greenBtn.classList.toggle('glow') 
+                greenSound.play();
+            } else if (color === 'red') {
+                  redBtn.classList.toggle('glow');
+                  redSound.play();
+            } else if (color === 'blue') {
+                  blueBtn.classList.toggle('glow');
+                  blueSound.play();
+            } else if (color === 'yellow') {
                   yellowBtn.classList.toggle('glow');
-                }, 500);
-                level-=1;
-      }
+                  yellowSound.play();
+            }
+      });
 }
 
-}
 
 // function showCompArray () {
 //       for(i = 0; i < compArray.length; i+=1){
