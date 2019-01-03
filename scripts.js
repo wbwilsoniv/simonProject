@@ -1,3 +1,4 @@
+
 // Global Variables
 const gameBoard = document.querySelector(`.gameBoard`);
 const redBtn = document.querySelector(`#redParentDiv`);
@@ -17,6 +18,7 @@ let userScore = 0;
 let i = 0;
 let compArray = [];
 let userArray = [];
+let userTurn = false;
 let level = compArray.length;
 // let displayArray
 
@@ -79,14 +81,19 @@ pageLoad();
 function gameLoop() {
       randomize();
       showCompArray();
+      asyncCall();
       // getUserInput();
       // timedArrayCheck();
 }
 
-function compTurn() {
-      randomize();
-      showCompArray();
-}
+// function compTurn() {
+//       randomize();
+//       showCompArray();
+// }
+
+// function userTurn() {
+//       return !userTurn;
+// }
 // function to take User input and push to userArray
 // when button click, pushes value (set as color) of button to userArray
 function getUserInput() {
@@ -155,12 +162,21 @@ function checkArrays(userArray, compArray) {
 // loops over array - toggles display for each color
 // code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
 function showCompArray () {
-      let showComp = setTimeout(function(){
+      return new Promise(resolve => {
+      let showComp = setTimeout(() => {
         compMoves(compArray);
+        resolve('resolved');
         if (i > compArray.length) {
               clearInterval(showComp);
         }
-      }, 1000)
+      }, 500);
+      });
+}
+
+async function asyncCall() {
+      console.log('calling');
+      let result = await showCompArray();
+      console.log(result);
 }
 
 function compMoves(compArray) {
