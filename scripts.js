@@ -32,7 +32,7 @@ function randomize() {
       }
       let randomNum = getRandomNum(0, 3);
       compArray.push(btnArray[randomNum]);
-      return randomNum
+      console.log(randomNum);
 }
 // on click of startbtn - game logic runs
 function gameStart() {
@@ -40,7 +40,7 @@ function gameStart() {
 //       e.preventDefault();
 //       if (compArray.length === 0) {randomize();}
       alert('Get Ready for Round 1! Repeat the process');
-      // gameLoop();
+      setTimeout(() => {gameLoop()},1000);
 }
 
 function clearGame() {
@@ -78,11 +78,10 @@ pageLoad();
 
 function gameLoop() {
       randomize();
-      showCompArray();
-      getUserInput();
-      timedArrayCheck();
+      // showCompArray();
+      // getUserInput();
+      // timedArrayCheck();
 }
-gameLoop();
 // function to take User input and push to userArray
 // when button click, pushes value (set as color) of button to userArray
 function getUserInput() {
