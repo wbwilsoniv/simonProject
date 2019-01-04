@@ -18,7 +18,7 @@ let userScore = 0;
 let i = 0;
 let compArray = [];
 let userArray = [];
-let userTurn = false;
+let isUserTurn = false;
 let level = compArray.length;
 // let displayArray
 
@@ -41,7 +41,7 @@ function gameStart() {
 //   startBtn.addEventListener('click', (e) => {
 //       e.preventDefault();
 //       if (compArray.length === 0) {randomize();}
-      alert('Get Ready for Round 1! Repeat the process');
+      alert(`Get Ready for Round ${compArray.length}! Repeat the process`);
       setTimeout(() => {gameLoop()}, 1000);
 }
 
@@ -64,7 +64,9 @@ function pageLoad() {
       form.addEventListener('click', (e) => {
             e.preventDefault();
             let color = e.target.id.slice(0,-9);
+            userArray.push(`${color}`);
             showTile(color);
+            compareArr();
       });
 }
 pageLoad();
@@ -84,6 +86,19 @@ function gameLoop() {
       displayTiles(compArray);
       // getUserInput();
       // timedArrayCheck();
+}
+
+function compareArr(compArray, userArray) {
+      if(compArray === userArray) {
+            console.log('Great Success!');
+            userScore++;
+            showScore();
+      } else { console.log('Game Over')};
+}
+
+function lvlTimer() {
+      let lvlDelay = compArray.length * 4000; 
+      setTimeout(() => compareArr(), lvlDelay);
 }
 
 // function compTurn() {
