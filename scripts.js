@@ -61,10 +61,10 @@ function pageLoad() {
             e.preventDefault();
             clearGame();
       });
-      btn.addEventListener('click', (e) => {
+      form.addEventListener('click', (e) => {
             e.preventDefault();
             let color = e.target.id.slice(0,-9);
-            console.log(color);
+            showTile(color);
       });
 }
 pageLoad();
@@ -90,41 +90,6 @@ function gameLoop() {
 //       randomize();
 //       showCompArray();
 // }
-
-// function userTurn() {
-//       return !userTurn;
-// }
-// function to take User input and push to userArray
-// when button click, pushes value (set as color) of button to userArray
-function getUserInput() {
-        form.addEventListener('click', (e) => {
-        e.preventDefault();
-        // checks for value(color) of e.target before pushing to userArray
-        if (e.target.value === 'green'){
-              greenSound.play();
-              userArray.push('green');
-              greenBtn.classList.toggle('glow');
-        }
-        if (e.target.value === 'blue'){
-              blueSound.play();
-              userArray.push('blue');
-              blueBtn.classList.toggle('glow');
-        }
-        if (e.target.id === 'red'){
-              redSound.play();
-              userArray.push('red');
-              redBtn.classList.toggle('glow');
-        }
-        if (e.target.value === 'yellow'){
-              yellowSound.play();
-              userArray.push('yellow');
-              yellowBtn.classList.toggle('glow');
-        }
-      // debugger;
-      // checkArrays(userArray, compArray);
-  });
-}
-
 
 // game logic to check userArray & compArray then call randomize function to add additional color and increase userScore by 1
 function timedArrayCheck(){
@@ -159,50 +124,8 @@ function checkArrays(userArray, compArray) {
 // View
 
 // function for displaying compArray
-// loops over array - toggles display for each color
 // code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
-function showCompArray () {
-      return new Promise(resolve => {
-      let showComp = setTimeout(() => {
-        compMoves(compArray);
-        resolve('resolved');
-        if (i > compArray.length) {
-              clearInterval(showComp);
-        }
-      }, 1000);
-      });
-}
 
-async function asyncCall() {
-      console.log('calling');
-      let result = await showCompArray();
-      console.log(result);
-}
-
-function compMoves(compArray) {
-      compArray.forEach(color, i => {
-            let delay = i * 1000;      
-            setTimeout(function() {
-                  if (color === 'green') { 
-                        greenBtn.classList.toggle('glow'); 
-                        greenSound.play();
-                        console.log(delay);
-                  } else if (color === 'red') {
-                        redBtn.classList.toggle('glow');
-                        redSound.play();
-                        console.log(delay);
-                  } else if (color === 'blue') {
-                        blueBtn.classList.toggle('glow');
-                        blueSound.play();
-                        console.log(delay);
-                  } else if (color === 'yellow') {
-                        yellowBtn.classList.toggle('glow');
-                        yellowSound.play();
-                        console.log(delay);
-                  }
-            }, delay);
-      });
-}
 
 function displayTiles(compArray) {
       compArray.forEach(function(item, index){
@@ -223,27 +146,6 @@ function showTile(color) {
       console.log(tile);
 }
 
-
-// function showCompArray () {
-//       for(i = 0; i < compArray.length; i+=1){
-//         if(compArray[i] === 'green'){
-//           greenSound.play();
-//           greenBtn.classList.add('glow');
-//         } else if(compArray[i] === 'red'){
-//           redSound.play();
-//           redBtn.classList.add('glow');
-//         } else if(compArray[i] === 'blue'){
-//           blueSound.loop = false;
-//           blueSound.play();
-//           blueBtn.classList.add('glow');
-//         } else if(compArray[i] === 'yellow'){
-//           yellowSound.play();
-//           yellowSound.loop = false;
-//           yellowBtn.classList.add('glow');
-//         }
-//       }
-// }
-// let showComp = setInterval(showCompArray, 1000);
 // function to display userScore
 function showScore (){
       const scoreBoard = document.querySelector('.scoreboard > p');
