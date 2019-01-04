@@ -6,7 +6,7 @@ const blueBtn = document.querySelector(`#blueParentDiv`);
 const greenBtn = document.querySelector(`#greenParentDiv`);
 const yellowBtn = document.querySelector(`#yellowParentDiv`);
 const form = document.querySelector('.gameBoard');
-const btn = form.querySelectorAll(".gamebtn");
+const btn = form.querySelectorAll(".parentDiv");
 const clearBtn = document.querySelector('.clear');
 const startBtn = document.querySelector('.start');
 // const redSound = new Audio('sounds/red-piano-a.wav');
@@ -61,9 +61,10 @@ function pageLoad() {
             e.preventDefault();
             clearGame();
       });
-      form.addEventListener('click', (e) => {
-            e.preventDefault()
-            console.log(e.target.value);
+      btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let color = e.target.id.slice(0,-9);
+            console.log(color);
       });
 }
 pageLoad();
@@ -109,7 +110,7 @@ function getUserInput() {
               userArray.push('blue');
               blueBtn.classList.toggle('glow');
         }
-        if (e.target.value === 'red'){
+        if (e.target.id === 'red'){
               redSound.play();
               userArray.push('red');
               redBtn.classList.toggle('glow');
@@ -218,6 +219,7 @@ function showTile(color) {
       let sound = new Audio(`sounds/${color}-piano.wav`);
       sound.play();
       tile.classList.toggle('glow');
+      setTimeout(() => tile.classList.toggle('glow'), 750);
       console.log(tile);
 }
 
