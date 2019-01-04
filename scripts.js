@@ -9,10 +9,10 @@ const form = document.querySelector('.gameBoard');
 const btn = form.querySelectorAll(".gamebtn");
 const clearBtn = document.querySelector('.clear');
 const startBtn = document.querySelector('.start');
-const redSound = new Audio('sounds/red-piano-a.wav');
-const blueSound = new Audio('sounds/blue-piano-f.wav');
-const yellowSound = new Audio('sounds/yellow-piano-c.wav');
-const greenSound = new Audio('sounds/green-piano-e.wav');
+// const redSound = new Audio('sounds/red-piano-a.wav');
+// const blueSound = new Audio('sounds/blue-piano-f.wav');
+// const yellowSound = new Audio('sounds/yellow-piano-c.wav');
+// const greenSound = new Audio('sounds/green-piano-e.wav');
 const btnArray = ['green',`red`,'yellow', 'blue'];
 let userScore = 0;
 let i = 0;
@@ -80,8 +80,7 @@ pageLoad();
 
 function gameLoop() {
       randomize();
-      showCompArray();
-      asyncCall();
+      displayTiles(compArray);
       // getUserInput();
       // timedArrayCheck();
 }
@@ -180,21 +179,46 @@ async function asyncCall() {
 }
 
 function compMoves(compArray) {
-      compArray.forEach(color => {
-          if (color === 'green') { 
-                greenBtn.classList.toggle('glow') 
-                greenSound.play();
-            } else if (color === 'red') {
-                  redBtn.classList.toggle('glow');
-                  redSound.play();
-            } else if (color === 'blue') {
-                  blueBtn.classList.toggle('glow');
-                  blueSound.play();
-            } else if (color === 'yellow') {
-                  yellowBtn.classList.toggle('glow');
-                  yellowSound.play();
-            }
+      compArray.forEach(color, i => {
+            let delay = i * 1000;      
+            setTimeout(function() {
+                  if (color === 'green') { 
+                        greenBtn.classList.toggle('glow'); 
+                        greenSound.play();
+                        console.log(delay);
+                  } else if (color === 'red') {
+                        redBtn.classList.toggle('glow');
+                        redSound.play();
+                        console.log(delay);
+                  } else if (color === 'blue') {
+                        blueBtn.classList.toggle('glow');
+                        blueSound.play();
+                        console.log(delay);
+                  } else if (color === 'yellow') {
+                        yellowBtn.classList.toggle('glow');
+                        yellowSound.play();
+                        console.log(delay);
+                  }
+            }, delay);
       });
+}
+
+function displayTiles(compArray) {
+      compArray.forEach(function(item, index){
+            let delay = index * 1500;
+            setTimeout(function(){
+                  showTile(item);
+                  console.log(delay);
+            }, delay);
+      })
+}
+
+function showTile(color) {
+      let tile = document.querySelector(`#${color}ParentDiv`);
+      let sound = new Audio(`sounds/${color}-piano.wav`);
+      sound.play();
+      tile.classList.toggle('glow');
+      console.log(tile);
 }
 
 
