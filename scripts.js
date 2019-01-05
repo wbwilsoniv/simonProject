@@ -19,7 +19,6 @@ let i = 0;
 let compArray = [];
 let userArray = [];
 let isUserTurn = false;
-let level = compArray.length;
 // let displayArray
 
 // Game Logic Functions
@@ -38,10 +37,8 @@ function randomize() {
 }
 // on click of startbtn - game logic runs
 function gameStart() {
-//   startBtn.addEventListener('click', (e) => {
-//       e.preventDefault();
-//       if (compArray.length === 0) {randomize();}
-      alert(`Get Ready for Round ${compArray.length}! Repeat the process`);
+      alert(`Get Ready for Round ${userScore + 1}! Repeat the process`);
+      userArray = [];
       setTimeout(() => {gameLoop()}, 1000);
 }
 
@@ -66,12 +63,14 @@ function pageLoad() {
             let color = e.target.id.slice(0,-9);
             userArray.push(`${color}`);
             showTile(color);
-            compareArr();
+            // lvlTimer(compArray);
       });
 }
 pageLoad();
 // GAME LOOP
 
+function userClick() {
+}
 // clearGame();
 // gameStart();
 // randomize();
@@ -90,15 +89,15 @@ function gameLoop() {
 
 function compareArr(compArray, userArray) {
       if(compArray === userArray) {
-            console.log('Great Success!');
             userScore++;
+            console.log(`Great Success! ${compArray}`);
             showScore();
       } else { console.log('Game Over')};
 }
 
-function lvlTimer() {
-      let lvlDelay = compArray.length * 4000; 
-      setTimeout(() => compareArr(), lvlDelay);
+function lvlTimer(compArray, userArray) {
+      let lvlDelay = userArray.length * 3000; 
+      setTimeout(() => compareArr(compArray, userArray), lvlDelay);
 }
 
 // function compTurn() {
@@ -143,13 +142,15 @@ function checkArrays(userArray, compArray) {
 
 
 function displayTiles(compArray) {
-      compArray.forEach(function(item, index){
-            let delay = index * 1500;
-            setTimeout(function(){
-                  showTile(item);
-                  console.log(delay);
-            }, delay);
-      })
+      return new Promise(resolve => {
+            compArray.forEach(function(item, index){
+                  let delay = index * 1500;
+                  setTimeout(() => {
+                        showTile(item)
+                        resolve(console.log('prom com-plete'));
+                  }, delay);
+            });
+      });
 }
 
 function showTile(color) {
@@ -157,7 +158,7 @@ function showTile(color) {
       let sound = new Audio(`sounds/${color}-piano.wav`);
       sound.play();
       tile.classList.toggle('glow');
-      setTimeout(() => tile.classList.toggle('glow'), 750);
+      setTimeout(() => tile.classList.toggle('glow'), 550);
       console.log(tile);
 }
 
