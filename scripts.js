@@ -145,11 +145,10 @@ function displayTiles(compArray) {
       return new Promise(resolve => {
             compArray.forEach(function(item, index){
                   let delay = index * 1500;
-                  setTimeout(() => {
-                        showTile(item)
-                        resolve(console.log('prom com-plete'));
-                  }, delay);
+                  setTimeout(() => showTile(item), delay);
             });
+            let promDelay = compArray.length * 1600;
+            setTimeout(() => resolve(console.log(promDelay)), promDelay);
       });
 }
 
