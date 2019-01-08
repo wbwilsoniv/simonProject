@@ -39,7 +39,7 @@ function randomize() {
 function gameStart() {
       alert(`Get Ready for Round ${userScore + 1}! Repeat the process`);
       userArray = [];
-      setTimeout(() => {gameLoop()}, 1000);
+      setTimeout(() => gameLoop(), 1000);
 }
 
 function clearGame() {
@@ -61,15 +61,17 @@ function pageLoad() {
       form.addEventListener('click', (e) => {
             e.preventDefault();
             let color = e.target.id.slice(0,-9);
-            userArray.push(`${color}`);
-            showTile(color);
+            isUserTurn ? showTile(color) : null;
+            isUserTurn ? userArray.push(`${color}`) : null;
             // lvlTimer(compArray);
       });
 }
 pageLoad();
 // GAME LOOP
 
-function userClick() {
+function endOfTurn() {
+      isUserTurn = !isUserTurn;
+      console.log(isUserTurn);
 }
 // clearGame();
 // gameStart();
@@ -82,9 +84,17 @@ function userClick() {
 
 function gameLoop() {
       randomize();
-      displayTiles(compArray);
+      // displayTiles(compArray);
+      showCompTurn();
       // getUserInput();
       // timedArrayCheck();
+}
+
+async function showCompTurn() {
+      console.log('calling');
+      const turnDone = await displayTiles(compArray);
+      endOfTurn();
+      console.log(turnDone);
 }
 
 function compareArr(compArray, userArray) {
@@ -143,12 +153,12 @@ function checkArrays(userArray, compArray) {
 
 function displayTiles(compArray) {
       return new Promise(resolve => {
-            compArray.forEach(function(item, index){
+            let compArr = compArray.forEach(function(item, index){
                   let delay = index * 1500;
                   setTimeout(() => showTile(item), delay);
             });
             let promDelay = compArray.length * 1600;
-            setTimeout(() => resolve(console.log(promDelay)), promDelay);
+            setTimeout(() => resolve(console.log(compArr)), promDelay);
       });
 }
 
@@ -158,7 +168,6 @@ function showTile(color) {
       sound.play();
       tile.classList.toggle('glow');
       setTimeout(() => tile.classList.toggle('glow'), 550);
-      console.log(tile);
 }
 
 // function to display userScore
