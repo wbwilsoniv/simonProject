@@ -1,50 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" type="text/css" href="main.css">
-      <title>Simon</title>
-      <script src="scripts.js" defer></script>
-</head>
-<body>
-  <div class="heading">
-    <h1>Simon</h1>
-  </div>
-  <div class="scoreContainer">
-    <div class="scoreboard">
-      <h4>Score</h4>
-      <p>0</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>Simon</title>
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <div class="heading"><h1>Simon</h1></div>
+    <div class="scoreContainer">
+      <div class="scoreboard">
+        <h4>Score</h4>
+        <p>0</p>
+      </div>
+      <div class="hiScore">
+        <h4>High Score</h4>
+        <p>0</p>
+      </div>
     </div>
-    <div class="hiScore">
-      <h4>High Score</h4>
-      <p>0</p>
+    <div class="turnContainer">
+      <div id="turnIndicator"><h2 class="toggle-display">Your Turn!</h2></div>
     </div>
-  </div>
-  <div class="turnContainer">
-    <div id="turnIndicator">
-      <h2 class="toggle-display">Your Turn!</h2>
+    <div class="gameboardParentDiv">
+      <form class="gameBoard">
+        <div class="parentDiv" id="greenParentDiv"><p>Green</p></div>
+        <div class="parentDiv" id="redParentDiv"><p>Red</p></div>
+        <div class="parentDiv" id="yellowParentDiv"><p>Yellow</p></div>
+        <div class="parentDiv" id="blueParentDiv"><p>Blue</p></div>
+      </form>
+      <div class="middle">
+        <div class="simonDiv"><h1>SIMON</h1></div>
+        <div class="gameControlDiv">
+          <div class="gameControls">
+            <button class="start">Start</button>
+            <button class="clear">Clear</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="gameControls">
-      <div class="start">Start</div>
-      <div class="clear">Clear</div>
-  </div>
-  <div class="gameboardParentDiv">
-    <form class="gameBoard">
-      <div class="parentDiv" id="greenParentDiv">
-        <p>Green</p>
-      </div>
-      <div class="parentDiv" id="redParentDiv">
-        <p>Red</p>
-      </div>
-      <div class="parentDiv" id="yellowParentDiv">
-        <p>Yellow</p>
-      </div>
-      <div class="parentDiv" id="blueParentDiv">
-        <p>Blue</p>
-      </div>
-  </div>
-</body>
+  </body>
 </html>
