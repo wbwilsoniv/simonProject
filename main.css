@@ -70,7 +70,16 @@ body {
   height: 25px;
   border-radius: 5px;
   margin: 0px 13px 0 13px;
-  border: 1px solid white;
+  border: 1px solid rgb(177, 168, 168);
+  color: white;
+}
+
+.start {
+  background-color: green;
+}
+
+.clear {
+  background-color: red;
 }
 
 .toggle-display {
