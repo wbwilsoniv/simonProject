@@ -142,12 +142,12 @@ async function showCompTurn() {
 }
 
 function showScore() {
-  const scoreBoard = document.querySelector(".scoreboard > p");
+  const scoreBoard = document.querySelector(".scoreboard > h3");
   scoreBoard.innerHTML = userScore;
 }
 
 function updateScore() {
-  const hiScoreBoard = document.querySelector(".hiScore > p");
+  const hiScoreBoard = document.querySelector(".hiScore > h3");
   userScore >= hiScore ? (hiScore = userScore) : null;
   hiScoreBoard.innerHTML = hiScore;
 }
