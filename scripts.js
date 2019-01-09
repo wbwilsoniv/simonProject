@@ -1,18 +1,8 @@
 // Global Variables
-const gameBoard = document.querySelector(`.gameBoard`);
-const redBtn = document.querySelector(`#redParentDiv`);
-const blueBtn = document.querySelector(`#blueParentDiv`);
-const greenBtn = document.querySelector(`#greenParentDiv`);
-const yellowBtn = document.querySelector(`#yellowParentDiv`);
 const form = document.querySelector(".gameBoard");
-const btn = form.querySelectorAll(".parentDiv");
 const clearBtn = document.querySelector(".clear");
 const startBtn = document.querySelector(".start");
 const turn = document.getElementById("#turnIndicator");
-// const redSound = new Audio('sounds/red-piano-a.wav');
-// const blueSound = new Audio('sounds/blue-piano-f.wav');
-// const yellowSound = new Audio('sounds/yellow-piano-c.wav');
-// const greenSound = new Audio('sounds/green-piano-e.wav');
 const btnArray = ["green", `red`, "yellow", "blue"];
 let userScore = 0;
 let hiScore = 0;
@@ -20,7 +10,6 @@ let i = 0;
 let compArray = [];
 let userArray = [];
 let isUserTurn = true;
-// let displayArray
 
 // Game Logic Functions
 
@@ -47,7 +36,6 @@ function clearGame() {
   userArray = [];
   compArray = [];
   userScore = 0;
-  //   showScore();
 }
 
 function pageLoad() {
@@ -62,29 +50,21 @@ function pageLoad() {
   form.addEventListener("click", e => {
     e.preventDefault();
     let color = e.target.id.slice(0, -9);
-    //     isUserTurn ? showTile(color) : null;
-    // isUserTurn ? userArray.push(`${color}`) : null;
     isUserTurn ? checkClick(compArray, color) : null;
   });
 }
 pageLoad();
-// GAME LOOP
 
 function endOfTurn() {
   isUserTurn = !isUserTurn;
-  console.log(isUserTurn);
 }
 
 function gameLoop() {
   randomize();
   showCompTurn();
-  // displayTiles(compArray);
-  // getUserInput();
-  // timedArrayCheck();
 }
 
 function checkClick(compArray, color) {
-  //   let lvlDelay = compArray.length * 1500;
   let clickCount = userArray.length;
   if (color === compArray[clickCount]) {
     showTile(color);
@@ -93,8 +73,6 @@ function checkClick(compArray, color) {
     console.log(clickCount, "Right!");
   } else {
     console.log("WRONG!");
-    //     let naw = new Audio(`sounds/steve-hell-naw.wav`);
-    //     naw.play();
     wrongTile(color);
     setTimeout(() => {
       clearGame();
@@ -121,24 +99,12 @@ function checkClick(compArray, color) {
     : null;
 }
 
-function compareArr(compArray, userArray) {
-  if (compArray === userArray) {
-    userScore++;
-    showScore();
-    console.log(`Great Success! ${compArray}`);
-  } else {
-    console.log("Game Over");
-  }
-}
-
 function showPlayerTurn() {
   let turn = document.querySelector(".toggle-display");
   isUserTurn
     ? turn.classList.add("is-visible")
     : turn.classList.remove("is-visible");
 }
-// function for displaying compArray
-// code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
 
 function displayTiles(compArray) {
   return new Promise(resolve => {
@@ -173,9 +139,8 @@ async function showCompTurn() {
   endOfTurn();
   showPlayerTurn();
   return turnDone;
-  console.log(turnDone);
 }
-// function to display userScore
+
 function showScore() {
   const scoreBoard = document.querySelector(".scoreboard > p");
   scoreBoard.innerHTML = userScore;
