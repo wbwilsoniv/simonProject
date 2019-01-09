@@ -90,23 +90,27 @@ async function showCompTurn() {
 }
 
 function checkClick(compArray, color) {
-  //   let lvlDelay = compArray.length * 3000;
-  //   let userArray = [];
+  //   let lvlDelay = compArray.length * 1500;
   let clickCount = userArray.length;
   if (color === compArray[clickCount]) {
     userArray.push(`${color}`);
     clickCount++;
     console.log(clickCount, "Right!");
+  } else {
+    console.log("WRONG!");
   }
   const arrCheck = (userArray, compArray) => {
     if (userArray === compArray) {
       userScore++;
       showScore();
+      gameStart();
     } else {
       console.log("not matching");
     }
   };
-  userArray.length === compArray.length ? arrCheck() : null;
+  userArray.length === compArray.length
+    ? setTimeout(() => arrCheck(), 1000)
+    : null;
 
   //   userArray === compArray ? console.log("NEXT LVL") : null;
 
@@ -140,43 +144,15 @@ function compareArr(compArray, userArray) {
   }
 }
 
-function lvlTimer(compArray, userArray) {
-  let lvlDelay = userArray.length * 3000;
-  setTimeout(() => compareArr(compArray, userArray), lvlDelay);
-}
+// function lvlTimer(compArray, userArray) {
+//   let lvlDelay = userArray.length * 3000;
+//   setTimeout(() => compareArr(compArray, userArray), lvlDelay);
+// }
 
 // function compTurn() {
 //       randomize();
 //       showCompArray();
 // }
-
-// game logic to check userArray & compArray then call randomize function to add additional color and increase userScore by 1
-function timedArrayCheck() {
-  let arrayCheck = setTimeout(function() {
-    checkArrays(userArray, compArray);
-  }, 5000);
-}
-// compares arrays for end of the round
-// if arrays match, increase userScore,
-function checkArrays(userArray, compArray) {
-  if (userArray[i] === compArray[i] && userArray.length === compArray.length) {
-    userScore += 1;
-    alert("Correct! Get ready for the next round");
-    clearInterval(showCompArray);
-    showScore();
-    gameLoop();
-    i++;
-    if (userArray.length === compArray.length && userScore >= 5) {
-      alert("Winner");
-    }
-    //else if (userArray !== compArray) {
-    //    alert('You Lose. Womp Womp.');
-    // }
-    //      compArray[i]
-    //      i+=1
-  } else alert("You Lose. Womp Womp.");
-}
-// clear game function
 
 // View
 
@@ -207,16 +183,3 @@ function showScore() {
   const scoreBoard = document.querySelector(".scoreboard > p");
   scoreBoard.innerHTML = userScore;
 }
-
-// win logic display function
-
-// lose logic display function
-
-// round logic
-// clear round
-// game consists of: start button
-// randomize() and display compArray
-// wait for userInput
-// checkArray() with delay
-// showScore() OR Lose
-// randomize runs again
