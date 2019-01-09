@@ -22,8 +22,6 @@ let isUserTurn = true;
 
 // Game Logic Functions
 
-// function from MDN for inclusive random integer between two values.
-// use: randomly produce number between 1-4 to push to compArray for game logic.
 function randomize() {
   function getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -82,13 +80,6 @@ function gameLoop() {
   // timedArrayCheck();
 }
 
-async function showCompTurn() {
-  console.log("calling");
-  const turnDone = await displayTiles(compArray);
-  endOfTurn();
-  console.log(turnDone);
-}
-
 function checkClick(compArray, color) {
   //   let lvlDelay = compArray.length * 1500;
   let clickCount = userArray.length;
@@ -98,6 +89,8 @@ function checkClick(compArray, color) {
     console.log(clickCount, "Right!");
   } else {
     console.log("WRONG!");
+    let naw = new Audio(`sounds/steve-hell-naw.wav`);
+    naw.play();
   }
   const arrCheck = (userArray, compArray) => {
     if (userArray === compArray) {
@@ -178,6 +171,13 @@ function showTile(color) {
   setTimeout(() => tile.classList.toggle("glow"), 550);
 }
 
+async function showCompTurn() {
+  console.log("calling");
+  const turnDone = await displayTiles(compArray);
+  endOfTurn();
+  return turnDone;
+  console.log(turnDone);
+}
 // function to display userScore
 function showScore() {
   const scoreBoard = document.querySelector(".scoreboard > p");
