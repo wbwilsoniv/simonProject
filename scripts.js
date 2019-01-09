@@ -14,6 +14,7 @@ const startBtn = document.querySelector(".start");
 // const greenSound = new Audio('sounds/green-piano-e.wav');
 const btnArray = ["green", `red`, "yellow", "blue"];
 let userScore = 0;
+let hiScore = 0;
 let i = 0;
 let compArray = [];
 let userArray = [];
@@ -59,7 +60,7 @@ function pageLoad() {
   form.addEventListener("click", e => {
     e.preventDefault();
     let color = e.target.id.slice(0, -9);
-    isUserTurn ? showTile(color) : null;
+    //     isUserTurn ? showTile(color) : null;
     // isUserTurn ? userArray.push(`${color}`) : null;
     isUserTurn ? checkClick(compArray, color) : null;
   });
@@ -84,18 +85,28 @@ function checkClick(compArray, color) {
   //   let lvlDelay = compArray.length * 1500;
   let clickCount = userArray.length;
   if (color === compArray[clickCount]) {
+    showTile(color);
     userArray.push(`${color}`);
     clickCount++;
     console.log(clickCount, "Right!");
   } else {
     console.log("WRONG!");
-    let naw = new Audio(`sounds/steve-hell-naw.wav`);
-    naw.play();
+    //     let naw = new Audio(`sounds/steve-hell-naw.wav`);
+    //     naw.play();
+    //     let buzzer = new Audio(`sounds/buzzer1.wav`);
+    //     buzzer.play();
+    wrongTile(color);
+    setTimeout(() => {
+      clearGame();
+      alert("Game Over!");
+      showScore();
+    }, 1750);
   }
   const arrCheck = (userArray, compArray) => {
     if (userArray === compArray) {
       userScore++;
       showScore();
+      updateScore();
       gameStart();
     } else {
       console.log("not matching");
@@ -155,10 +166,10 @@ function compareArr(compArray, userArray) {
 function displayTiles(compArray) {
   return new Promise(resolve => {
     let compArr = compArray.forEach(function(item, index) {
-      let delay = index * 1500;
+      let delay = index * 1300;
       setTimeout(() => showTile(item), delay);
     });
-    let promDelay = compArray.length * 1600;
+    let promDelay = compArray.length * 1400;
     setTimeout(() => resolve(console.log(compArr)), promDelay);
   });
 }
@@ -167,6 +178,14 @@ function showTile(color) {
   let tile = document.querySelector(`#${color}ParentDiv`);
   let sound = new Audio(`sounds/${color}-piano.wav`);
   sound.play();
+  tile.classList.toggle("glow");
+  setTimeout(() => tile.classList.toggle("glow"), 550);
+}
+
+function wrongTile(color) {
+  let tile = document.querySelector(`#${color}ParentDiv`);
+  let buzzer = new Audio(`sounds/buzzer1.wav`);
+  buzzer.play();
   tile.classList.toggle("glow");
   setTimeout(() => tile.classList.toggle("glow"), 550);
 }
@@ -182,4 +201,10 @@ async function showCompTurn() {
 function showScore() {
   const scoreBoard = document.querySelector(".scoreboard > p");
   scoreBoard.innerHTML = userScore;
+}
+
+function updateScore() {
+  const hiScoreBoard = document.querySelector(".hiScore > p");
+  userScore >= hiScore ? (hiScore = userScore) : null;
+  hiScoreBoard.innerHTML = hiScore;
 }
