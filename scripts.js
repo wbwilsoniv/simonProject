@@ -93,8 +93,6 @@ function checkClick(compArray, color) {
     console.log("WRONG!");
     //     let naw = new Audio(`sounds/steve-hell-naw.wav`);
     //     naw.play();
-    //     let buzzer = new Audio(`sounds/buzzer1.wav`);
-    //     buzzer.play();
     wrongTile(color);
     setTimeout(() => {
       clearGame();
@@ -105,9 +103,13 @@ function checkClick(compArray, color) {
   const arrCheck = (userArray, compArray) => {
     if (userArray === compArray) {
       userScore++;
-      showScore();
-      updateScore();
-      gameStart();
+      let win = new Audio("sounds/win-sound.wav");
+      win.play();
+      setTimeout(() => {
+        showScore();
+        updateScore();
+        gameStart();
+      }, 1000);
     } else {
       console.log("not matching");
     }
@@ -115,27 +117,6 @@ function checkClick(compArray, color) {
   userArray.length === compArray.length
     ? setTimeout(() => arrCheck(), 1000)
     : null;
-
-  //   userArray === compArray ? console.log("NEXT LVL") : null;
-
-  //   for (let clickCount = 0; clickCount < compArray.length; clickCount++) {
-  //     if (color === compArray[clickCount]) {
-  //       userArray.push(`${color}`);
-  //       // clickCount++;
-  //       console.log(clickCount, "right");
-  //       // if (color === compArray[clickCount]) {
-  //       //   userArray.push(`${color}`);
-  //       //   console.log("right");
-  //       // }
-  //       //     } else if (userArray.length === compArray.length) {
-  //       //       console.log("Next Level");
-  //       //     } else {
-  //       //       console.log("Game Over");
-  //     } else {
-  //       console.log("wrong");
-  //     }
-  //   }
-  //   setTimeout(() => compareArr(compArray, userArray), lvlDelay);
 }
 
 function compareArr(compArray, userArray) {
@@ -147,18 +128,6 @@ function compareArr(compArray, userArray) {
     console.log("Game Over");
   }
 }
-
-// function lvlTimer(compArray, userArray) {
-//   let lvlDelay = userArray.length * 3000;
-//   setTimeout(() => compareArr(compArray, userArray), lvlDelay);
-// }
-
-// function compTurn() {
-//       randomize();
-//       showCompArray();
-// }
-
-// View
 
 // function for displaying compArray
 // code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
