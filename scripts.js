@@ -8,6 +8,7 @@ const form = document.querySelector(".gameBoard");
 const btn = form.querySelectorAll(".parentDiv");
 const clearBtn = document.querySelector(".clear");
 const startBtn = document.querySelector(".start");
+const turn = document.getElementById("#turnIndicator");
 // const redSound = new Audio('sounds/red-piano-a.wav');
 // const blueSound = new Audio('sounds/blue-piano-f.wav');
 // const yellowSound = new Audio('sounds/yellow-piano-c.wav');
@@ -38,6 +39,7 @@ function gameStart() {
   alert(`Get Ready for Round ${userScore + 1}! Repeat the process`);
   userArray = [];
   endOfTurn();
+  showPlayerTurn();
   setTimeout(() => gameLoop(), 1000);
 }
 
@@ -129,6 +131,12 @@ function compareArr(compArray, userArray) {
   }
 }
 
+function showPlayerTurn() {
+  let turn = document.querySelector(".toggle-display");
+  isUserTurn
+    ? turn.classList.add("is-visible")
+    : turn.classList.remove("is-visible");
+}
 // function for displaying compArray
 // code modified from https://medium.com/front-end-hacking/create-simon-game-in-javascript-d53b474a7416
 
@@ -163,6 +171,7 @@ async function showCompTurn() {
   console.log("calling");
   const turnDone = await displayTiles(compArray);
   endOfTurn();
+  showPlayerTurn();
   return turnDone;
   console.log(turnDone);
 }
