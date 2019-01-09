@@ -9,18 +9,22 @@
       <script src="scripts.js" defer></script>
 </head>
 <body>
-  <h1>Simon</h1>
-  <div class="scoreTurnContainer">
+  <div class="heading">
+    <h1>Simon</h1>
+  </div>
+  <div class="scoreContainer">
     <div class="scoreboard">
       <h4>Score</h4>
       <p>0</p>
     </div>
-    <div id="turnIndicator" class="toggle-display">
-      Your Turn!
-    </div>
     <div class="hiScore">
       <h4>High Score</h4>
       <p>0</p>
+    </div>
+  </div>
+  <div class="turnContainer">
+    <div id="turnIndicator">
+      <h2 class="toggle-display">Your Turn!</h2>
     </div>
   </div>
   <div class="gameControls">
@@ -30,24 +34,16 @@
   <div class="gameboardParentDiv">
     <form class="gameBoard">
       <div class="parentDiv" id="greenParentDiv">
-        <!-- <button class='gamebtn' id='greenbtn' type='submit' value='green' >
-        </button> -->
-        Green
+        <p>Green</p>
       </div>
       <div class="parentDiv" id="redParentDiv">
-        <!-- <button class='gamebtn' id='redbtn' type='submit' value='red'>
-        </button> -->
-        Red
+        <p>Red</p>
       </div>
       <div class="parentDiv" id="yellowParentDiv">
-        <!-- <button class='gamebtn' id='yellowbtn' type='submit' value='yellow'>
-        </button> -->
-        Yellow
+        <p>Yellow</p>
       </div>
       <div class="parentDiv" id="blueParentDiv">
-        <!-- <button class='gamebtn' id='bluebtn' type='submit' value='blue'>
-        </button> -->
-        Blue
+        <p>Blue</p>
       </div>
   </div>
 </body>
