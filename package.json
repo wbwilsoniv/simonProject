@@ -1,0 +1,22 @@
+{
+  "name": "simonproject",
+  "version": "1.0.0",
+  "description": "Remake of the 1978 Milton Bros classic game",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wbwilsoniv/simonProject.git"
+  },
+  "author": "Will Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wbwilsoniv/simonProject/issues"
+  },
+  "homepage": "https://github.com/wbwilsoniv/simonProject#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

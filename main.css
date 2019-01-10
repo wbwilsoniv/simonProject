@@ -37,6 +37,7 @@ body {
 }
 .simonDiv h1 {
   color: rgb(177, 168, 168);
+  font-size: 3em;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .gameControlDiv {
