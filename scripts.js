@@ -102,11 +102,13 @@ function checkClick(compArray, color) {
 function displayTiles(compArray) {
   return new Promise(resolve => {
     let compArr = compArray.forEach(function(item, index) {
-      let delay = index * 1300;
+      let lvl = compArray.length * 50;
+      let delay = index * (1200 - lvl);
       setTimeout(() => showTile(item), delay);
+      console.log(delay);
     });
-    let promDelay = compArray.length * 1400;
-    setTimeout(() => resolve(console.log(compArr)), promDelay);
+    let promDelay = compArray.length * (1250 - compArray.length * 50);
+    setTimeout(() => resolve(console.log(compArr, promDelay)), promDelay);
   });
 }
 
