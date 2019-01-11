@@ -90,6 +90,14 @@ body {
 .toggle-display.is-visible {
   display: block;
 }
+
+.display-toggle {
+  display: none;
+}
+
+.display-toggle.is-visible {
+  display: block;
+}
 .gameboardParentDiv {
   position: relative;
   height: 550px;
@@ -107,6 +115,13 @@ body {
 .turnContainer {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }

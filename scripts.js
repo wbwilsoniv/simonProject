@@ -26,8 +26,8 @@ function randomize() {
 // on click of startbtn - game logic runs
 function gameStart() {
   userArray = [];
-  showMessage();
   endOfTurn();
+  showMessage();
   showPlayerTurn();
   setTimeout(() => gameLoop(), 1000);
 }
@@ -99,13 +99,6 @@ function checkClick(compArray, color) {
     : null;
 }
 
-function showPlayerTurn() {
-  let turn = document.querySelector(".toggle-display");
-  isUserTurn
-    ? turn.classList.add("is-visible")
-    : turn.classList.remove("is-visible");
-}
-
 function displayTiles(compArray) {
   return new Promise(resolve => {
     let compArr = compArray.forEach(function(item, index) {
@@ -133,18 +126,28 @@ function wrongTile(color) {
   setTimeout(() => tile.classList.toggle("glow"), 550);
 }
 
+function showPlayerTurn() {
+  let turn = document.querySelector(".toggle-display");
+  isUserTurn
+    ? turn.classList.add("is-visible")
+    : turn.classList.remove("is-visible");
+}
 async function showCompTurn() {
   console.log("calling");
   const turnDone = await displayTiles(compArray);
   endOfTurn();
+  showMessage();
   showPlayerTurn();
   return turnDone;
 }
 
 function showMessage() {
-  const messageDiv = document.querySelector(".messageContainer > h4");
-  let message = `Get Ready for Round ${userScore + 1}! Repeat the process`;
-  messageDiv.innerHTML = message;
+  const messageEl = document.querySelector(".display-toggle");
+  let message = `Round ${userScore + 1}! Repeat the process`;
+  messageEl.innerHTML = message;
+  isUserTurn
+    ? messageEl.classList.remove("is-visible")
+    : messageEl.classList.add("is-visible");
 }
 
 function showScore() {
