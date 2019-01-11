@@ -25,8 +25,8 @@ function randomize() {
 }
 // on click of startbtn - game logic runs
 function gameStart() {
-  alert(`Get Ready for Round ${userScore + 1}! Repeat the process`);
   userArray = [];
+  showMessage();
   endOfTurn();
   showPlayerTurn();
   setTimeout(() => gameLoop(), 1000);
@@ -139,6 +139,12 @@ async function showCompTurn() {
   endOfTurn();
   showPlayerTurn();
   return turnDone;
+}
+
+function showMessage() {
+  const messageDiv = document.querySelector(".messageContainer > h4");
+  let message = `Get Ready for Round ${userScore + 1}! Repeat the process`;
+  messageDiv.innerHTML = message;
 }
 
 function showScore() {
